@@ -17,6 +17,7 @@
 					<th>Manufacturer</th>
 					<th>UnitInStock</th>
 					<th>Description</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>

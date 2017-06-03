@@ -2,11 +2,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<script src="<c:url value="/resources/js/controller.js"/>"></script>
+
 <div class="container-wrapper">
-	<div class="container">
+	<div class="container" ng-app="cartApp">
 		<h2>Product Detail</h2>
 		<p class="lead">Here is the detail information of the product</p>
-		<div class="row">
+		
+		<div class="row" ng-controller="cartCtrl">
 			<div class="col-md-6">
 				<img
 					src="<c:url value="/resources/images/${product.imageFilename }"/>"
@@ -17,14 +20,37 @@
 				<h3>${product.name }</h3>
 				<p>${product.description }</p>
 				<p>
-					<strong>Manufacturer</strong> : ${product.manufacturer }
+					<strong>Manufacturer: </strong> ${product.manufacturer }
 				</p>
 				<p>
-					<strong>Category</strong> : ${product.category }
+					<strong>Category: </strong> ${product.category }
 				</p>
 				<p>
 					<strong>${product.price }원</strong>
 				</p>
+
+				<br>
+
+				<c:if test="${pageContext.request.userPrincipal.name != null }">
+					<c:set var="role" value="${param.role }" />
+					<c:set var="url" value="/products" />
+					<c:if test="${role='admin' }">
+						<c:set var="url" value="/admin/productInventory" />
+					</c:if>
+
+					<p>
+						<a href="<c:url value="${url}" />" class="btn btn-default">Back
+						</a>
+						<button class="btn btn-warning btn-large"
+							ng-click="addToCart('${product.id }')">
+							<span class="glyphicon glyphicon-shopping-cart"></span>Order Now
+						</button>
+
+						<a href="<c:url value="/cart"/>" class="btn btn-default"> <span
+							class="glyphicon glyphicon-hand-right"></span>View Cart
+						</a>
+					</p>
+				</c:if>
 			</div>
 		</div>
 	</div>

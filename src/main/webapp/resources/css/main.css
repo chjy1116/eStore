@@ -20,3 +20,6 @@
 	text-overflow: ellipsis;
 	white-space:nowrap;
 }
+.padding {
+	margin-bottom : 30px;
+}
