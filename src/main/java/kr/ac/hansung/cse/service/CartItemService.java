@@ -28,4 +28,7 @@ public class CartItemService {
 		return cartItemDao.getCartById(cartId, productId);
 	}
 
+	public void editCartItem(CartItem cartItem) {
+		cartItemDao.editCartItem(cartItem);
+	}
 }

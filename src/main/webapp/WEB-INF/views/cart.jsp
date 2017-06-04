@@ -39,7 +39,16 @@
 						<td><a href="#" class="label label-danger"
 							ng-click="removeFromCart(item.product.id)"> <span
 								class="glyphicon glyphicon-remove"></span>remove
-						</a></td>
+						</a>
+						<a href="#" class="label label-danger"
+							ng-click="plusQuantity(item.product.id)"> <span
+								class="glyphicon glyphicon-plus"></span>plus
+						</a>
+						<a href="#" class="label label-danger"
+							ng-click="minusQuantity(item.product.id)"> <span
+								class="glyphicon glyphicon-minus"></span>minus
+						</a>
+						</td>
 					</tr>
 
 					<tr>

@@ -33,21 +33,26 @@ public class CartItemDao {
 
 	public void removeAllCartItems(Cart cart) {
 		List<CartItem> cartItems = cart.getCartItems();
-		
-		for(CartItem item : cartItems) {
+
+		for (CartItem item : cartItems) {
 			removeCartItem(item);
 		}
-
 	}
 
 	public CartItem getCartById(int cartId, int productId) {
 		Session session = sessionFactory.getCurrentSession();
 		Query query = session.createQuery("from CartItem where cart.cartId =:cid and product.id = :pid");
-		
+
 		query.setInteger("cid", cartId);
 		query.setInteger("pid", productId);
-	
+
 		return (CartItem) query.uniqueResult();
+	}
+
+	public void editCartItem(CartItem cartItem) {
+		Session session = sessionFactory.getCurrentSession();
+		session.update(cartItem);
+		session.flush();
 	}
 
 }
