@@ -24,6 +24,7 @@ public class CartItemService {
 	public void removeAllCartItems(Cart cart) {
 		cartItemDao.removeAllCartItems(cart);
 	}
+	
 	public CartItem getCartByProductId(int cartId, int productId) {
 		return cartItemDao.getCartById(cartId, productId);
 	}
